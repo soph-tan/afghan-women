@@ -13,7 +13,7 @@ Includes links to organizations that are committed to helping Afghan women.
 ### Pen Pal Page:
 Includes a form where Afghan women are paired with people from around the world, so they can connect and feel less alone.
 ### Citations Page:
-Includes MLA citations for the information included.
+Includes APA citations for the information included.
 
 ## Built in
 - HTML
