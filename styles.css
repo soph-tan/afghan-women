@@ -1,0 +1,436 @@
+/* === Import font from google fonts === */
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;800&display=swap");
+
+/* === reset === */
+* {
+  box-sizing: border-box; /*to make layout easier to manage*/
+  margin: 0;
+  padding: 0;
+}
+
+/* === base body styling === */
+body {
+  font-family: "Urbanist", sans-serif;
+  background-color: #fdfcfa;
+  color: #2c2c2c;
+  line-height: 1.6;
+}
+
+/* === NAVIGATION BAR === */
+.navbar {
+  background-color: #fff; /* White background */
+  padding: 1.5em 2em; /* Space around content */
+  text-align: center;
+  margin-bottom: 2.5em; /* Space below navbar */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Soft shadow under navbar */
+  border-radius: 0 0 12px 12px; /* Rounded bottom corners */
+}
+
+.navbar ul {
+  list-style: none; /* Removes bullet points */
+  display: flex; /* Horizontal layout */
+  justify-content: center; /* Centers nav items */
+  gap: 4em; /* Space between items */
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  padding: 0;
+}
+
+.navbar a {
+  text-decoration: none; /* Removes underline */
+  color: #1f1f1f; /* Dark gray text */
+  font-weight: 600;
+  font-size: 1.05rem;
+  position: relative;
+  letter-spacing: 0.5px;
+}
+
+/* Creates a line that animates on hover under each nav link */
+.navbar a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #ffa883; /* color of the line */
+  transition: width 0.3s ease;
+}
+
+.navbar a:hover::after {
+  width: 100%; /* Grows line on hover */
+}
+
+/* === CAROUSEL SECTION === */
+.carousel-container {
+  position: relative;
+  height: 420px; /* Height of carousel area */
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #d8edba; /* Light green background */
+  flex-direction: column;
+  padding: 0;
+}
+
+.carousel-track-wrapper {
+  width: 100vw; /* Full width of the user's screen */
+  overflow: hidden; /* Hides overflowing slides */
+  margin: 0 auto;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex; /* Slides are side by side */
+  transition: transform 0.5s ease-in-out; /* sliding animation */
+  gap: 20px; /* Space between slides */
+}
+
+.carousel-slide {
+  flex: 0 0 500px; /* Fixed width for each slide */
+  height: 300px;
+  object-fit: cover;
+  border-radius: 0px;
+  transition: transform 0.3s ease, opacity 0.3s ease; /* smooth hover effect */
+  opacity: 0.6; /* default lower visibility */
+  transform: scale(0.85); /* slightly zoomed out by default */
+}
+
+/* Active slide  */
+.carousel-slide.active {
+  opacity: 1; /* Fully visible */
+  transform: scale(1); /* Full size */
+  z-index: 10; /* Brought to front */
+}
+
+/* Overlay text in the center of the carousel */
+.carousel-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 3em;
+  font-weight: 800;
+  text-shadow: 1px 1px 5px black; /* text shadow for readability */
+  text-align: center;
+  pointer-events: none; /* allows clicks to pass through */
+}
+
+/* Dot navigation below carousel */
+.carousel-dots {
+  position: absolute; /* dots over the carousel */
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(
+    -50%
+  ); /* adjusted back by half its own width to perfectly center */
+  display: flex;
+  gap: 10px;
+  z-index: 20; /* ensures the dots being above the slides */
+}
+
+/* Individual dot styling */
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%; /* Makes it a circle */
+  background-color: #d7c5dc; /* Light purple color */
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+/* Highlight the active dot */
+.dot.active {
+  opacity: 1;
+  background-color: #f6b469; /* Bright orange dot for active slide */
+}
+
+/* === SECTION BLOCKS === */
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 4em 2em;
+  flex-wrap: wrap;
+  background-color: #f2d7d9;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Alternate background color for even-numbered sections */
+.section:nth-of-type(even) {
+  background-color: #e0f1c4; /* Light green for contrast */
+}
+
+/* Styling for images inside sections */
+.section img {
+  max-width: 320px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /*soft shadow around images */
+}
+
+/* Reverse section layout */
+.reverse {
+  flex-direction: row-reverse;
+}
+
+/* Content block within section */
+.content {
+  max-width: 500px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+/* === CALL TO ACTION ("Learn More" card) === */
+.cta {
+  background-color: #ffa883;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  margin: 60px auto;
+  max-width: 700px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* soft shadow around card */
+}
+
+.cta h3 {
+  font-size: 24px;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+.cta p {
+  font-size: 16px;
+  color: #2c2c2c;
+  margin-bottom: 20px;
+}
+
+/* Button inside the call to action card */
+.cta button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #1f1f1f;
+  color: white;
+  border-radius: 30px;
+  font-weight: 500;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for button */
+.cta button:hover {
+  background-color: #333;
+}
+
+/*=======================*/
+/* === INFORMATION PAGE === */
+
+.infoheading {
+  background-image: url("https://www.afghanistan-analysts.org/en/wp-content/uploads/sites/2/2023/08/33R47G9-highres-1024x682.jpg");
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+  color: whitesmoke;
+}
+
+.infotext {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+}
+
+.note {
+  /* Make text for photo source and the note about personal stories smaller */
+  padding-top: 10px;
+  font-size: 12px;
+}
+
+.infosubheading {
+  padding: 15px;
+}
+
+.maininfo {
+  background-color: #e0f1c4;
+  display: flex;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  justify-content: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.infosection {
+  display: flex;
+  flex-direction: column;
+}
+
+.personalstories {
+  background-color: #f2d7d9;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.personalstory {
+  /* Space between each story */
+  padding: 25px;
+}
+
+/*=======================*/
+/*=======================*/
+/*=======================*/
+/*=======================*/
+/*=======================*/
+/*=======================*/
+/* === PEN PAL PAGE === */
+
+/* Header section */
+.penpalHeaderContainer {
+  background-color: #e0f1c4;
+  padding: 4em 2em;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.penpalHeaderContainerTitleText {
+  font-size: 2.5em;
+  font-weight: 800;
+  color: #2c2c2c;
+  margin-bottom: 0.5em;
+}
+
+.penpalFormTitle {
+  margin-bottom: 0.5em;
+}
+
+.penpalHeaderContainerSubtitleText {
+  font-size: 1.2em;
+  max-width: 700px;
+  margin: 0 auto;
+  color: #444;
+  line-height: 1.6;
+}
+
+.penpalFormSubtitle {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 1.9em;
+}
+
+/* Main form container */
+.penpalMainContainer {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 0 15px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.penpalMainContainerForms label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.penpalMainContainerForms input,
+.penpalMainContainerForms select,
+.penpalMainContainerForms textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  font-family: "Open Sans", sans-serif;
+  box-sizing: border-box;
+}
+
+/* Submit button styling */
+.penpalMainContainerForms button.penpalSubmitButton {
+  background-color: #007acc;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect */
+.penpalMainContainerForms button.penpalSubmitButton:hover {
+  background-color: #005f99;
+}
+
+/* Confirmation message styling */
+.penpalConfirmation {
+  display: none;
+  margin-bottom: 1em;
+  font-weight: 600;
+  color: #2c2c2c;
+  background-color: #e0f1c4;
+  padding: 12px 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Resource_Page styles */
+
+.intro_resource {
+  color: black;
+  background-color: #e0f1c4;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: 15px;
+  padding-top: 25px;
+  text-align: center;
+  font-size: 50px;
+}
+
+.why_resource {
+  color: black;
+  background-color: #e0f1c4;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: 5px;
+  padding-top: 0px;
+  text-align: center;
+}
+
+.resources {
+  background-color: #f2d7d9;
+  text-align: center;
+  font-size: 35px;
+  font-family: "courier new", sans-serif;
+  .links {
+    font-size: 25px;
+    display: inline;
+    color: #334318;
+    padding-top: 0px;
+  }
+}
+
+/* citationspage */
+.Works_Cited {
+  color: black;
+  background-color: #ffa883;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: 15px;
+  padding-top: 25px;
+  text-align: center;
+  font-size: 50px;
+}
+
+.item {
+  padding: 20px;
+  background-color: #e0f1c4;
+}
